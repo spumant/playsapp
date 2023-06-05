@@ -4,6 +4,58 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>by.gsu.epamlab.controllers.InitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DatePlayServlet</servlet-name>
+        <servlet-class>by.gsu.epamlab.controllers.DatePlayServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DatePlayServlet</servlet-name>
+        <url-pattern>/datePlays</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>by.gsu.epamlab.controllers.OrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenreServlet</servlet-name>
+        <servlet-class>by.gsu.epamlab.controllers.GenreServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GenreServlet</servlet-name>
+        <url-pattern>/genres</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AuthorServlet</servlet-name>
+        <servlet-class>by.gsu.epamlab.controllers.AuthorServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AuthorServlet</servlet-name>
+        <url-pattern>/authors</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>admin_page.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

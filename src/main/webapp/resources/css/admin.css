@@ -1,0 +1,30 @@
+body {
+    background-color: #FFFFFF;
+}
+
+#wrapper {
+    width: 1100px;
+    height: auto;
+    margin: auto;
+    background-color: #f5f5f5;
+}
+
+#menu {
+    width: 100%;
+    height: auto;
+}
+
+#table-Plays {
+    width: 100%;
+    height: auto;
+}
+
+#table-Authors {
+     width: 100%;
+     height: auto;
+}
+
+#table-Genres {
+    width: 100%;
+    height: auto;
+}

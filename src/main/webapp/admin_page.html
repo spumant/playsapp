@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--http-equiv="refresh" content="30"-->
+    <link href="resources/css/admin.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="resources/js/admin.js"></script>
+
+</head>
+
+<body onload="initialListPlays()">
+<div id="wrapper">
+<!--//////////////////////MENU//////////////////////////////////////-->
+<div>
+    <p></p>
+    <table id="menu" border=1 cellpadding=1 cellspacing=1>
+        <tr>
+            <th colspan="3">Menu</th>
+        </tr>
+        <tr align="center">
+            <th><a href="javascript:initialPlay();">Add Play</a></th>
+            <th><a href="javascript:initialGenre();">Add Genre</a></th>
+            <th><a href="javascript:initialAuthor();">Add Author</a></th>
+        </tr>
+        <tr align="center">
+            <th><a href="javascript:initialListPlays();">List Plays</a></th>
+            <th><a href="javascript:initialListGenres();">List Genres</a></th>
+            <th><a href="javascript:initialListAuthors();">List Authors</a></th>
+    </table>
+</div>
+<br>
+<!--///////////////////////////////////////////////////////////////-->
+
+
+<!--/////////////////////ADD_GENRE//////////////////////////////////-->
+<div id="add_genre" style="display: none;">
+    <input type="button" onclick="javascript:createGenre();" value="Add genre"><br><br>
+    Name: <br>
+    <form onsubmit="javascript:addGenre(this);return false;">
+        <div id="genre_inputs">
+            <input type="text" placeholder="Enter genre" required></br>
+        </div>
+        <br>
+        <input type="submit" value="Submit"> <input type="reset" value="Reset">
+    </form>
+</div>
+<!--////////////////////////////////////////////////////////////////-->
+
+
+<!--/////////////////////EDIT_GENRE//////////////////////////////////-->
+<div id="edit_genre" style="display: none;">
+    Name: <br>
+    <form onsubmit="javascript:saveEditGenre();return false;">
+        <div>
+            <input id="editGenreIdInput" type="hidden"/>
+            <input id="editGenreNameInput" type="text" placeholder="Enter genre" required></br>
+        </div>
+        <br>
+        <input type="submit" value="Save&Edit"> <input type="reset" value="Reset">
+    </form>
+</div>
+<!--////////////////////////////////////////////////////////////////-->
+
+
+<!--/////////////////////LIST_GENRE//////////////////////////////////-->
+<div id="getListGenres" style="display: none;">
+    <table id="table-Genres" border=1 cellpadding=1 cellspacing=1>
+        <thead>
+        <tr>
+            <th colspan="5">Genres:</th>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th colspan=2>Action</th>
+        </tr>
+        </thead>
+        <tbody id="table-ListGenres">
+        </tbody>
+    </table>
+</div>
+<!--////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////ADD_AUTHOR/////////////////////////////////-->
+<div id="add_author" style="display: none;">
+    <input type="button" onclick="javascript:createAuthor();" value="Add author"><br><br>
+    <table>
+        <tr>
+            <td width="175">Name:</td>
+            <td>Link:</td>
+        </tr>
+    </table>
+    <form onsubmit="javascript:addAuthor(this);return false;">
+        <div id="author_inputs">
+            <input type="text" class="authorName" placeholder="Enter name of author" required>
+            <input type="text" class="authorInfo" placeholder="Enter info of author" required><br>
+        </div>
+        <br>
+        <input type="submit" value="Submit"> <input type="reset" value="Reset">
+    </form>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////EDIT_AUTHOR/////////////////////////////////-->
+<div id="edit_author" style="display: none;">
+    <table>
+        <tr>
+            <td width="175">Name:</td>
+            <td>Link:</td>
+        </tr>
+    </table>
+    <form onsubmit="javascript:saveEditAuthor();return false;">
+        <div>
+            <input id="editAuthorIdInput" type="hidden"/>
+            <input id="editAuthorNameInput" type="text" placeholder="Enter name of author" required>
+            <input id="editAuthorInfoInput" type="text" placeholder="Enter info of author" required><br>
+        </div>
+        <br>
+        <input type="submit" value="Save&Edit"> <input type="reset" value="Reset">
+    </form>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////LIST_AUTHOR/////////////////////////////////-->
+<div id="getListAuthors" style="display: none;">
+    <table id="table-Authors" border=1 cellpadding=1 cellspacing=1>
+        <thead>
+        <tr>
+            <th colspan="5">Authors:</th>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Info</th>
+            <th colspan=2>Action</th>
+        </tr>
+        </thead>
+        <tbody id="table-ListAuthors">
+        </tbody>
+
+    </table>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////ADD_PLAY/////////////////////////////////-->
+<div id="add_play" style="display: none;">
+    <input type="button" onclick="javascript:createPlay();" value="Add play"><br><br>
+    <form id="form" onsubmit="javascript:addPlay(this);return false;">
+        <div>
+            <div id="div" style="display: none;">
+                <table>
+                    <thead>
+                    <tr>
+                        <td></td>
+                        <td>Genre</td>
+                        <td>Author</td>
+                        <td>Name</td>
+                        <td>Info</td>
+                    </tr>
+                    </thead>
+                    <tbody class="tbodyPlay">
+                    <tr>
+                        <td><input id="1" class="count" type="button" onclick="javascript:createDate(this)" value="Add date"></td>
+                        <td>
+                            <select class="playGenre">
+                            </select>
+                        </td>
+                        <td>
+                            <select class="playAuthor">
+                            </select>
+                        </td>
+                        <td><input type="text" class="playName" placeholder="Enter name of play"></td>
+                        <td><textarea class="playInfo" rows="2" cols="70" placeholder="Enter info of play"></textarea>
+                        </td>
+                    </tr>
+                    <table class="tablePlayDate">
+                        <tr>
+                            <td><input type="date" size="3" class="playDate" onchange="javascript:initialButton(this)">
+                            </td>
+                            <td><input type="button" onclick="javascript:removeDate(this)" value="X"
+                                       style="display: none;"></td>
+                        </tr>
+                    </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div><input type="submit" value="Submit"> <input type="reset" value="Reset"></div>
+    </form>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////EDIT_PLAY/////////////////////////////////-->
+<div id="edit_play" style="display: none;">
+    <form onsubmit="javascript:saveEditPlay();return false;">
+        <input id="editPlayIdInput" type="hidden"/>
+        <div>
+            <div id="edit_div">
+                <table>
+                    <thead>
+                    <tr>
+                        <td></td>
+                        <td>Genre</td>
+                        <td>Author</td>
+                        <td>Name</td>
+                        <td>Info</td>
+                    </tr>
+                    </thead>
+                    <tbody class="tbodyPlay">
+                    <tr>
+                        <td><input id="0" class="count" type="button" onclick="javascript:createDate(this)"
+                                   value="Add date"></td>
+                        <td>
+                            <select id="editPlayGenreIdSelect" class="playGenre">
+                            </select>
+                        </td>
+                        <td>
+                            <select id="editPlayAuthorIdSelect" class="playAuthor">
+                            </select>
+                        </td>
+                        <td><input id="editPlayNameSelect" type="text" class="playName"></td>
+                        <td><textarea id="editPlayInfoTextarea" class="playInfo" rows="2" cols="70"></textarea>
+                        </td>
+                    </tr>
+                    <table class="tablePlayDate">
+                        <tr id="editDatesOfPlay">
+                        </tr>
+                    </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div><input type="submit" value="Save&Edit"> <input type="reset" value="Reset"></div>
+    </form>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+
+
+<!--//////////////////////LIST_PLAY/////////////////////////////////-->
+<div id="getListPlays" style="display: none;">
+    <table id="table-Plays" border=1 cellpadding=1 cellspacing=1>
+        <thead>
+        <tr>
+            <th colspan="7">Plays:</th>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Info</th>
+            <th colspan=2>Action</th>
+        </tr>
+        </thead>
+        <tbody id="table-ListPlays">
+        </tbody>
+    </table>
+</div>
+<!--//////////////////////////////////////////////////////////////////-->
+</div>
+</body>
+
+</html>
